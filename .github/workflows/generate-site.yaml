@@ -1,18 +1,19 @@
 name: generate-site
-on:
-  push:
-    branches: [ $default-branch ]
+on: [push]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         name: "Checkout Code"
+        with:
+          fetch-depth: 0
       - run: ./blog_gen
         name: "Run Blog Generator"
       - name: Commit files
         run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add -f public
           git commit -m "Generate Site Files (Github Actions)"
-          git subtree push --prefix public origin gh-pages
-
+          git push origin `git subtree split --prefix public master`:gh-pages --force
