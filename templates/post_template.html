@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }} - {{ CONFIG.siteName }}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ post.description }}">
+    <meta name="author" content="{{ CONFIG.author.name }}">
+    <link rel="shortcut icon" href="{{ CONFIG.siteIcon }}">
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/syntax.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
+    <!-- PureCSS -->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@1.0.1/build/base-min.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css">
+
+</head>
+
+<body>
+    <script>
+        // wrapped as IIFE to use private variables and functions
+        (function() {
+            function setTheme(newTheme) {
+                document.body.className = newTheme; // "dark" or "light"
+                window.__theme = newTheme;
+                window.__onThemeChange(newTheme);
+            }
+            window.__onThemeChange = function() {};
+            window.__setPreferredTheme = function(newTheme) {
+                setTheme(newTheme);
+                try {
+                    localStorage.setItem("theme", JSON.stringify(window.__theme));
+                } catch (err) {}
+            };
+            const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+            darkQuery.addListener(function(event) {
+                window.__setPreferredTheme(event.matches ? "dark" : "light");
+            });
+            let preferredTheme;
+            try {
+                preferredTheme = JSON.parse(localStorage.getItem("theme"));
+            } catch (err) {}
+            setTheme(preferredTheme || (darkQuery.matches ? "dark" : "light"));
+        })();
+    </script>
+    <div class="container">
+        <div class="header">
+            <h1>{{ post.title }}</h1>
+            <div class="subheader">
+                <a href="{{CONFIG.author.html_url}}"><img src="{{CONFIG.author.avatar_url}}" class="avatar" alt="{{CONFIG.author.name}}" /></a>
+                <a href="{{CONFIG.author.html_url}}">{{CONFIG.author.name}}</a>
+                <p class="subdued">/ {{post.createdAt}}</p>
+            </div>
+        </div>
+        <article>
+            {{ post.formattedContent }}
+        </article>
+        <div class="footer">
+            <a href="/" style="text-decoration: none;">← </a><a href="/">Check out more articles</a>
+        </div>
+    </div>
+</body>
+
+</html>

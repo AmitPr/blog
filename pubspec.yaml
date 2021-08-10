@@ -9,6 +9,9 @@ environment:
 dependencies:
   markdown: ^4.0.0
   jinja: ^0.3.4
+  highlight: ^0.7.0
+  http: ^0.13.3
+  intl: ^0.17.0
 
 
 dev_dependencies:
