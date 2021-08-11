@@ -2,14 +2,21 @@ name: generate-site
 on: [push]
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         name: "Checkout Code"
         with:
           fetch-depth: 0
-      - run: ./blog_gen
-        name: "Run Blog Generator"
+      - uses: dart-lang/setup-dart@v1
+        name: "Setup Dart"
+      - name: "Setup blog generator"
+        run: |
+          git clone https://github.com/AmitPr/blog_gen.git
+          cd blog_gen && dart pub get && cd ../
+      - name: "Run Blog Generator"
+        run: |
+          dart run blog_gen/bin/blog_gen.dart
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
