@@ -1,7 +1,7 @@
 
 title: A Usability Test for Dart: Static Site Generation.
 description: Critiquing Dart when applying it to create low-maintainance, dynamic blogs, like this one, using Github Actions and Pages.
-createdAt: 2021-08-08
+createdAt: 2021-08-10
 tags: Dart, Web
 
 ---
@@ -44,6 +44,5 @@ The other *major* issue is the [lack of support for cross-compilation](https://g
 Other more minor problems include limited documentation and support in the [markdown](https://pub.dev/packages/markdown) and [jinja](https://pub.dev/packages/jinja) packages, but none of this hindered the quality and ease of use of the generator.  
 
 
-Reflecting on my thoughts, I'm not sure whether I would choose to create a static site generator in Dart if I were to start over. I'm going to stick with using and building upon the base that I have right now, and I'm excited to see how Dart improves in the future.  
-  
+Reflecting on my thoughts, I'm not sure whether I would choose to create a static site generator in Dart if I were to start over. I'm going to stick with using and building upon the [base that I have right now](https://github.com/AmitPr/blog_gen), and I'm excited to see how Dart improves in the future.  
   
