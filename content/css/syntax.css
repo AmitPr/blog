@@ -6,6 +6,7 @@ code {
 .code-block {
     display: block;
     padding: 1em;
+    overflow: scroll;
 }
 
 
