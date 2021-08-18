@@ -54,9 +54,14 @@
         <div class="header">
             <h1>{{ post.title }}</h1>
             <div class="subheader">
-                <a href="{{CONFIG.author.html_url}}"><img src="{{CONFIG.author.avatar_url}}" class="avatar" alt="{{CONFIG.author.name}}" /></a>
-                <a href="{{CONFIG.author.html_url}}">{{CONFIG.author.name}}</a>
-                <p class="subdued">/ {{post.createdAt}}</p>
+                <div class="post-details">
+                    <a class="image-container" href="{{CONFIG.author.html_url}}"><img src="{{CONFIG.author.avatar_url}}" class="avatar" alt="{{CONFIG.author.name}}" /></a>
+                    <a href="{{CONFIG.author.html_url}}">{{CONFIG.author.name}}</a>
+                    <p class="subdued">/ {{post.createdAt}}</p>
+                </div>
+                <div class="actions">
+                    <a href="/">Blog Home</a>
+                </div>
             </div>
         </div>
         <article>

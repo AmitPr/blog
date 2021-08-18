@@ -55,13 +55,20 @@
     </script>
     <div class="container">
         <div class="header">
-            <div class="subheader" style="text-align: center;">
+            <div class="subheader">
+                <div class="author-details">
+                    <h1 class="author-name">
+                        {{CONFIG.author.name}}
+                    </h1>
+                    <a href="/">Home</a>
+                    <a href="/">Blog</a>
+                    <a href="{{CONFIG.author.html_url}}">Github</a>
+                </div>
                 <div class="avatar-container">
                     <a href="{{CONFIG.author.html_url}}">
                         <img src="{{CONFIG.author.avatar_url}}" class="avatar avatar-big" alt="{{CONFIG.author.name}}" />
                     </a>
                 </div>
-                <a href="{{CONFIG.author.html_url}}">{{CONFIG.author.name}}</a>
             </div>
             <div class="siteInfo">
                 <p>{{CONFIG.siteDescription}}</p>

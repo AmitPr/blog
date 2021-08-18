@@ -44,15 +44,53 @@ img {
     font-size: 3em;
 }
 
-.header a {
+.post-details a {
     text-decoration: none;
     color: inherit;
     font-size: 1.4em;
 }
 
-.header p {
+.post-details p {
     display: inline;
     font-size: 1em;
+    margin-left: 0.25em;
+    margin-bottom: 0;
+}
+
+.subheader {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.avatar-container {
+    display: flex;
+    align-items: end;
+}
+
+.author-details {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: start;
+}
+
+.author-details h1 {
+    margin: 0;
+}
+
+.actions,
+.post-details,
+.image-container {
+    display: flex;
+    align-items: center;
+}
+
+.image-container {
+    flex-shrink: 0;
+}
+
+.actions a {
+    padding: 0 0.5em;
 }
 
 .siteInfo {
@@ -62,16 +100,24 @@ img {
 img.avatar {
     height: 2em;
     width: auto;
-    vertical-align: middle;
     border-radius: 50%;
     margin-right: 0.3em;
 }
 
 img.avatar-big {
-    height: 4em;
+    height: 10em;
     width: auto;
     border-radius: 50%;
     margin-right: 0.3em;
+}
+
+.author-name {
+    margin: none;
+}
+
+.author-name a {
+    color: inherit;
+    text-decoration: none;
 }
 
 body.light .subdued {
