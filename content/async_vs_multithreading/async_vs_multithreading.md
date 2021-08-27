@@ -1,4 +1,4 @@
-
+type: post
 title: How Async/Await is different from Multithreading
 description: Going over the differences between async/await and multithreading in an easy-to-understand way, and why it's important to understand the differences between the two.
 createdAt: 2021-08-14

@@ -1,4 +1,4 @@
-
+type: post
 title: A Usability Test for Dart: Static Site Generation.
 description: Critiquing Dart when applying it to create low-maintainance, dynamic blogs, like this one, using Github Actions and Pages.
 createdAt: 2021-08-10

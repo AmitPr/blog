@@ -1,90 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>{{ CONFIG.siteName }}</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ CONFIG.siteDescription }}">
-    <meta name="author" content="{{ CONFIG.author.name }}">
-    <link rel="shortcut icon" href="{{ CONFIG.siteIcon }}">
-
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/css/syntax.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&family=Source+Sans+Pro&display=swap" rel="stylesheet">
-
-    <!-- PureCSS -->
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@1.0.1/build/base-min.css">
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css">
-
-</head>
-
-<body>
-    <script>
-        // wrapped as IIFE to use private variables and functions
-        (function() {
-            function setTheme(newTheme) {
-                document.body.className = newTheme;
-                window.__theme = newTheme;
-                window.__onThemeChange(newTheme);
-            }
-            window.__onThemeChange = function() {};
-            window.__setPreferredTheme = function(newTheme) {
-                setTheme(newTheme);
-                try {
-                    localStorage.setItem("theme", JSON.stringify(window.__theme));
-                } catch (err) {}
-            };
-            // detect system theme and monitor for changes
-            const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
-            darkQuery.addListener(function(event) {
-                window.__setPreferredTheme(event.matches ? "dark" : "light");
-            });
-            let preferredTheme;
-            // try to get saved theme
-            try {
-                preferredTheme = JSON.parse(localStorage.getItem("theme"));
-            } catch (err) {}
-            // initialize preferredTheme
-            setTheme(preferredTheme || (darkQuery.matches ? "dark" : "light"));
-        })();
-    </script>
-    <div class="container">
-        <div class="header">
-            <div class="subheader">
-                <div class="author-details">
-                    <h1 class="author-name">
-                        {{CONFIG.author.name}}
-                    </h1>
-                    <a href="/">Home</a>
-                    <a href="/">Blog</a>
-                    <a href="{{CONFIG.author.html_url}}">Github</a>
-                </div>
-                <div class="avatar-container">
-                    <a href="{{CONFIG.author.html_url}}">
-                        <img src="{{CONFIG.author.avatar_url}}" class="avatar avatar-big" alt="{{CONFIG.author.name}}" />
-                    </a>
-                </div>
-            </div>
-            <div class="siteInfo">
-                <p>{{CONFIG.siteDescription}}</p>
-            </div>
+{% extends "base.html" %} {% block head %}
+<title>{{ constants.siteName }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{{ constants.siteDescription }}">
+<meta name="author" content="{{ author.name }}">
+<link rel="shortcut icon" href="{{ constants.siteIcon }}"> {% endblock %} {% block content %}
+<div class="header">
+    <div class="subheader">
+        <div class="author-details">
+            <h1 class="author-name">
+                {{author.name}}
+            </h1>
+            <a href="/">Home</a>
+            <a href="/">Blog</a>
+            <a href="{{author.url}}">Github</a>
         </div>
-        <h1>Recent Posts</h1>
-        {% for post in posts %}
-        <div class="post-preview">
-            <a href="{{post.url}}" style="text-decoration: none;">
-                <h2 class="post-title">{{post.title}}</h2>
+        <div class="avatar-container">
+            <a href="{{author.url}}">
+                <img src="{{author.icon}}" class="avatar avatar-big" alt="{{author.name}}" />
             </a>
-            <p class="post-description">{{post.description}}</p>
-            <p class="post-date subdued">{{post.createdAt}}</p>
         </div>
-        {% endfor %}
     </div>
-</body>
-
-</html>
+    <div class="siteInfo">
+        <p>{{constants.siteDescription}}</p>
+    </div>
+</div>
+<h1>Recent Posts</h1>
+{% for post in posts|sort(attribute="createdAt") %}
+<div class="post-preview">
+    <a href="{{post.url}}" style="text-decoration: none;">
+        <h2 class="post-title">{{post.title}}</h2>
+    </a>
+    <p class="post-description">{{post.description}}</p>
+    <p class="post-date subdued">{{post.createdAt.strftime("%B %-d, %Y")}}</p>
+</div>
+{% endfor %} {% endblock %}

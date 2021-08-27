@@ -11,15 +11,18 @@ jobs:
         name: "Checkout Code"
         with:
           fetch-depth: 0
-      - uses: dart-lang/setup-dart@v1
-        name: "Setup Dart"
-      - name: "Setup blog generator"
+      - name: "Setup Python"
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install dependencies
         run: |
           git clone https://github.com/AmitPr/blog_gen.git
-          cd blog_gen && dart pub get && cd ../
+          python -m pip install --upgrade pip
+          if [ -f blog_gen/requirements.txt ]; then pip install -r blog_gen/requirements.txt; fi
       - name: "Run Blog Generator"
         run: |
-          dart run blog_gen/bin/blog_gen.dart
+          python3 blog_gen/main.py
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
