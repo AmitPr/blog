@@ -3,15 +3,33 @@ body {
     color: #24292E;
 }
 
+.dynamic-stroke * {
+    stroke: #24292E;
+}
+
+.dynamic-fill {
+    fill: #24292E;
+}
+
 body.dark {
     background-color: #1b1b1b;
     color: #F6F4F3;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 2em;
+body.dark .dynamic-stroke * {
+    stroke: #F6F4F3;
+}
+
+body.dark .dynamic-fill {
+    fill: #F6F4F3;
+}
+
+body.light .subdued {
+    color: #8b95a0;
+}
+
+body.dark .subdued {
+    color: #8d8682;
 }
 
 a {
@@ -36,12 +54,89 @@ img {
     max-width: 100%;
 }
 
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2em;
+}
+
 .header {
-    margin: 2em 0
+    margin: 2em 0;
 }
 
 .header h1 {
     font-size: 3em;
+}
+
+.subheader {
+    display: flex;
+    flex-flow: column-reverse wrap;
+    justify-content: space-between;
+}
+
+.avatar-container {
+    display: flex;
+    justify-content: center;
+}
+
+.author-details {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.links svg {
+    display: inline;
+    height: 2em;
+    width: 2em;
+}
+
+.links {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.links a {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+    margin: 0 1em;
+}
+
+.author-details h1 {
+    margin: 0;
+}
+
+@media (min-width: 640px) {
+    .subheader {
+        flex-flow: row wrap;
+    }
+    .avatar-container {
+        align-items: flex-end;
+    }
+    .author-details {
+        align-items: flex-start;
+        flex-flow: column wrap;
+    }
+    .links {
+        flex-flow: column wrap;
+        align-items: flex-start;
+    }
+    .links a {
+        flex-flow: row;
+        align-items: center;
+        text-align: left;
+        margin: 0;
+    }
+    .links svg {
+        margin-right: 1em;
+        height: 1.5em;
+        width: 1.5em;
+    }
 }
 
 .post-details a {
@@ -55,27 +150,6 @@ img {
     font-size: 1em;
     margin-left: 0.25em;
     margin-bottom: 0;
-}
-
-.subheader {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-}
-
-.avatar-container {
-    display: flex;
-    align-items: end;
-}
-
-.author-details {
-    display: flex;
-    flex-flow: column wrap;
-    align-items: start;
-}
-
-.author-details h1 {
-    margin: 0;
 }
 
 .actions,
@@ -118,14 +192,6 @@ img.avatar-big {
 .author-name a {
     color: inherit;
     text-decoration: none;
-}
-
-body.light .subdued {
-    color: #8b95a0;
-}
-
-body.dark .subdued {
-    color: #8d8682;
 }
 
 .post-preview p {
