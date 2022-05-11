@@ -5,7 +5,7 @@ createdAt: 2022-05-05
 tags: Concepts, Blockchain, Defi, Decentralization
 
 ---
-*Disclaimer: At the time of writing, I am employed by [Terraform Labs](https://terra.money/). Any opinions expressed here are my own, and do not necessarily reflect those of Terraform Labs.*
+*Disclaimer: Any opinions expressed here are my own, and do not reflect those of my employer.*
 
 For those unaware, blockchain technology has made leaps and bounds in the last decade. Hailing their freedom from the traditionally centralized world of finance, users of decentralized networks such as Bitcoin and Ethereum have advocated the ideals of "Defi", or "Decentralized Finance". Other examples of decentralized and/or distributed technologies include distributed file systems such as [IPFS](https://ipfs.io/), communication protocols such as [Matrix](https://matrix.org/), and many more. Decentralization offers attractive benefits concerning privacy, censorship, and security, as well as the promise of a world in which everyone owns their data. However, the true value proposition of decentralized technologies may be outweighed by one of the most basic tenets of humanity: convenience.
 
