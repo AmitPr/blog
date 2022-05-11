@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> 
+<title>How Async/Await is different from Multithreading - Amit Prasad&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Going over the differences between async/await and multithreading in an easy-to-understand way, and why it&#39;s important to understand the differences between the two.">
+<meta name="author" content="Amit Prasad">
+<link rel="shortcut icon" href=""> 
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/syntax.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <script async defer data-website-id="ff352f3c-3995-4d85-b079-e3d41bf591a9" src="https://a.amitprasad.dev/u.js"></script>
+</head>
+
+<body>
+    <script src="/js/theme.js"></script>
+    <div class="container">
+        
+<div class="header">
+    <h1>How Async/Await is different from Multithreading</h1>
+    <div class="subheader">
+        <div class="post-details">
+            <a class="image-container" href="https://github.com/AmitPr"><img src="https://avatars.githubusercontent.com/u/13373751?v=4" class="avatar" alt="Amit Prasad" /></a>
+            <a href="https://github.com/AmitPr">Amit Prasad</a>
+            <p class="subdued">/ August 14, 2021</p>
+        </div>
+        <div class="actions">
+            <a href="/">Blog Home</a>
+        </div>
+    </div>
+</div>
+<article>
+    <p>While talking to some of friends recently, I noticed that they used the terms &quot;Asynchronous&quot; and &quot;Multithreaded&quot; interchangably. Since the difference can appear to be subtle at first, I thought it best to lay out the differences alongside an analogy that I hope helps. To properly explain the difference between the two, it's important to first understand the basics of both the concepts, as well as how they differ from &quot;simple&quot; single-threaded programs.</p>
+<h2>Single-threaded processing</h2>
+<p>Single-threaded processing is what you, or any other developer, has probably interacted with and written the most. These programs are simple. Given a set of tasks, they run them one at a time, waiting for each task to complete before moving on to the next. This means that if there's a task that takes a long time to complete, the rest of the tasks will be delayed until that long-running task is done.  </p>
+<p>To put it another way, a common analogy used to explain these concepts has us think of the kitchen. If you have a set of steps that you need to take to prepare a meal, you can't do them out of order, or all at once. You have to do them one-by-one, making sure that each step is done before moving on to the next:  </p>
+<ol>
+<li>Get the bread</li>
+<li>Take one slice of bread</li>
+<li>Put the bread in the toaster</li>
+<li>Take the bread out of the toaster</li>
+<li>Butter the bread  </li>
+</ol>
+<p>In more technical terms, your program runs one operation at a time, no matter how long each operation takes to complete.</p>
+<h2>Asynchronous processing</h2>
+<p>Asynchronous processing is a bit more complex. It's similar to single-threaded processing, but instead of waiting for each task to complete before moving on to the next, you can start moving on to different tasks at the same time. Stepping back into our kitchen example:</p>
+<ol>
+<li>Get the bread</li>
+<li>Take one slice of bread</li>
+<li>Put the bread in the toaster</li>
+<li><em>While waiting for the bread to toast</em>, Scramble some eggs</li>
+<li>When the toaster is done, take out the bread and butter it</li>
+<li>Take the eggs out of your pan, <em>if they haven't already finished</em> cooking by this point.</li>
+</ol>
+<p>And now that everything is cooked, you can finally start to eat your meal. Again, in more technical terms, your program can start working on other operations while waiting for another operation that takes a long time to complete. Note that this is only true if the operation you're waiting for is not an operation that requires the processor to be busy. For example, if you're waiting for a file to be loaded from the disc, or to fetch data over the network, you aren't doing any work other than waiting for the operation to complete, so asynchronous processing can be performed.  </p>
+<h2>Multithreading</h2>
+<p>Multithreading is different from asynchronous processing in that it's not running a single operation at any one time, but is instead running multiple operations in parallel. One last time in our kitchen example, let's look at the same set of steps, but with a multithreaded approach:</p>
+<ul>
+<li>Get the bread, and slice it</li>
+<li>While you are slicing the bread, your friend is busy slicing some fruits</li>
+<li>Put the bread in the toaster</li>
+<li>While you are toasting the bread, your friend is busy cooking some eggs</li>
+<li>When the bread is done, butter it</li>
+<li>While you are buttering the bread, your friend is busy putting the eggs in the plate</li>
+</ul>
+<p>As you can see, there are operations that are being performed in parallel because you are no longer the only cook in the kitchen. In technical terms, this is equivalent to another thread on the processor running another set of operations at the same time as the main thread.  </p>
+<h2>Async vs. Multithreading</h2>
+<p>One of the most important differences between the two is data access. Since only one operation is running at <em>any</em> time in a single-threaded asynchronous program, there's no possibility of data being accessed by two operations at the same time. This means that you need not worry about locking or synchronization between different operations. On the other hand, multithreaded programs need to be very careful not to modify data without being in complete sync with the other threads, as you may end up with race conditions and bad data. One last fact to keep in mind is that multithreaded programs can run operations asynchronously <em>within</em> each thread.  </p>
+<p>And that wraps up an explanation talking about the difference between synchronous, asynchronous, and multithreaded programs. If you're interested in seeing more, I recommend that you seek out a good set of examples in the language documentation of your choice (Although, async/await is a more modern language feature).  </p>
+
+</article>
+<div class="footer">
+    <a href="/" style="text-decoration: none;">← </a><a href="/">Check out more articles</a>
+</div>
+
+    </div>
+</body>
+
+</html>

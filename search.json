@@ -1,0 +1,27 @@
+[
+     {
+        "title": "A Usability Test for Dart: Static Site Generation.",
+        "tags": "[&#39;Dart&#39;, &#39;Web&#39;]",
+        "url": "dart_site_generation",
+        "createdAt": "2021-08-10 00:00:00",
+        "description": "Critiquing Dart when applying it to create low-maintainance, dynamic blogs, like this one, using Github Actions and Pages."
+    } ,   {
+        "title": "How Async/Await is different from Multithreading",
+        "tags": "[&#39;Concepts&#39;]",
+        "url": "async_vs_multithreading",
+        "createdAt": "2021-08-14 00:00:00",
+        "description": "Going over the differences between async/await and multithreading in an easy-to-understand way, and why it&#39;s important to understand the differences between the two."
+    } ,   {
+        "title": "You are the Product",
+        "tags": "[&#39;Privacy&#39;]",
+        "url": "you_are_the_product",
+        "createdAt": "2021-10-28 00:00:00",
+        "description": "Finding out about the hidden price of internet services we take for granted."
+    } ,   {
+        "title": "The Case against Decentralization",
+        "tags": "[&#39;Concepts&#39;, &#39;Blockchain&#39;, &#39;Defi&#39;, &#39;Decentralization&#39;]",
+        "url": "against_decentralization",
+        "createdAt": "2022-05-05 00:00:00",
+        "description": "Why I think decentralized technologies may never see mass adoption."
+    }  
+]
